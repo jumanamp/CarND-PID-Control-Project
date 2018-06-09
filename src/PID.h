@@ -1,6 +1,8 @@
 #ifndef PID_H
 #define PID_H
 
+#include <vector>
+
 class PID {
 public:
   /*
@@ -12,10 +14,17 @@ public:
 
   /*
   * Coefficients
-  */ 
+  */
   double Kp;
   double Ki;
   double Kd;
+
+  /*
+  * Cross Track Error History
+  */
+  const int n = 100;
+  std::vector<double> previous_cte{std::vector<double>(n)};
+  int track_cte_vec = 0;
 
   /*
   * Constructor
